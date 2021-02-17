@@ -1,23 +1,26 @@
 version: "3.9"
+
+networks:
+  backend:
+
 services:
   weba:
     build: ./nginx
     expose:
       - "80"
+    networks:
+      - backend
   
   webb:
     build: ./nginx
     expose:
       - "80"
+    networks:
+      - backend
 
   haproxy:
     build: ./haproxy
-    links:
-      - weba
-      - webb
+    networks: 
+      - backend
     ports:
       - "80:80"
-      - "70:70"
-    expose:
-      - "80"
-      - "70"

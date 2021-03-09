@@ -18,6 +18,13 @@ services:
     networks:
       - backend
 
+  webc:
+    build: ./nginx
+    expose:
+      - "80"
+    networks:
+      - backend
+      
   haproxy:
     build: ./haproxy
     networks: 

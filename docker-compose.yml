@@ -25,9 +25,9 @@ services:
     networks:
       - backend
       
-  haproxy:
-    build: ./haproxy
-    networks: 
+  nginx-lb:
+    build: ./nginx-loadbalancer
+    networks:
       - backend
     ports:
       - "80:80"
